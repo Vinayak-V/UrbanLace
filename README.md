@@ -1,66 +1,177 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 👟 UrbanLace — 3D Shoe Configurator & E-commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+UrbanLace is a modern, premium e-commerce platform and real-time **3D shoe configurator** built to provide customers with an immersive customization experience. Users can select shoe silhouettes (Low-top, Mid-top, High-top), customize individual mesh zones with specific colors and materials, save their designs, apply coupons, and track their order status through a handcrafted fulfillment pipeline.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tech Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+UrbanLace leverages a robust, modern technology stack to deliver seamless performance, clean code architecture, and high visual fidelity.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Backend & Foundation
+* **Framework:** [Laravel 11.x](https://laravel.com/) (PHP ^8.2) — offering elegant MVC routing, database migrations, model factories, and secure Eloquent ORM.
+* **Authentication:** [Laravel Breeze](https://laravel.com/docs/11.x/breeze) — supplying production-ready, secure authentication templates, password updates, and profile management.
+* **Document Generation:** `barryvdh/laravel-dompdf` — integrated for generating printable order receipts and invoices.
+* **Database:** SQLite (default/development) / MySQL support.
 
-## Learning Laravel
+### Frontend & Experience
+* **Build Tooling:** [Vite 5.x](https://vitejs.dev/) with hot-reloading for ultra-fast compilation.
+* **Styles:** [Tailwind CSS 3.x](https://tailwindcss.com/) — powering a fully custom, responsive design system.
+* **3D Engine:** [Three.js (WebGL)](https://threejs.org/) — renders procedural 3D shoe models dynamically in the browser, complete with real-time shadow mapping and environment lighting.
+* **State & Interaction:**
+  * [Alpine.js](https://alpinejs.dev/) — handles lightweight, reactive view states and modal controls.
+  * [GSAP (GreenSock)](https://greensock.com/gsap/) — powers smooth micro-animations, such as scale highlights when selecting mesh zones.
+  * [Pickr](https://github.com/simonwep/pickr) — a professional, highly customizable inline color picker.
+  * **Axios** — manages asynchronous API interactions for adding designs to carts, updating quantities, and applying coupons.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ✨ Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🎨 1. Real-time 3D Shoe Configurator
+* **Multiple Silhouettes:** Customizes **Urban Classic Low**, **Urban Court Mid**, or **Urban Pro High**.
+* **Precise Mesh Selection:** Selects individual zones by clicking on the list or interacting in the 3D space.
+* **Realistic Materials:** Select from **Premium Leather**, **Suede**, **Mesh**, or **Canvas** — each with distinct physical properties (roughness and metalness values rendered dynamically by Three.js).
+* **Color Customization:** Fine-tune hex values using an interactive color wheel (Pickr).
+* **Design Saving:** Saves custom shoe designs to the user's dashboard with a snapshot of the custom configuration state.
 
-## Laravel Sponsors
+### 🛒 2. Intelligent Shopping Cart
+* **Guest & User Support:** Works seamlessly using Laravel sessions for guests and database persistence for logged-in users.
+* **Dynamic Sizing:** Allows users to pick specific shoe sizes.
+* **Material-based Upgrades:** Automatically adjusts pricing dynamically based on material modifiers (e.g. Premium Leather adds a higher price modifier).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🏷️ 3. Checkout & Coupon System
+* **Multi-step Checkout:** Clean billing, shipping, and payment confirmation flows.
+* **Dynamic Coupons:** Admin-configurable discount logic:
+  * **Percentage Discounts** (e.g., 10% off).
+  * **Fixed Value Discounts** (e.g., $15.00 off).
+  * **Free Delivery Option**.
+  * Supports validation constraints like expiry dates, minimum order values, and maximum utilization counts.
+* **Flexible Delivery Options:** Customers can select standard shipping, express crafting, or rush orders with updated pricing.
 
-### Premium Partners
+### 📦 4. Order Tracking & Customer Dashboard
+* **Saved Designs Library:** Displays saved configurations in the user dashboard, ready to be reviewed or ordered again.
+* **Order Status Timeline:** Tracks orders visually through continuous states:
+  `Pending` ➔ `Confirmed` ➔ `Crafting` ➔ `Quality Check` ➔ `Shipped` ➔ `Out for Delivery` ➔ `Delivered`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 🛡️ 5. Admin Backoffice
+* **Order Management Dashboard:** Allows administrators to view all purchases.
+* **Status Updates:** Provides an admin control interface to advance customer orders through the crafting and delivery pipeline.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📊 Database Architecture
 
-## Code of Conduct
+UrbanLace maintains clean relational structures. Below is a map of the core models and their relationships:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```mermaid
+erDiagram
+    users ||--o{ shoe_designs : "creates"
+    users ||--o{ carts : "owns"
+    users ||--o{ orders : "places"
+    
+    shoes ||--o{ color_zones : "defines"
+    shoes ||--o{ shoe_designs : "referenced_by"
+    shoes ||--o{ order_items : "referenced_by"
+    
+    shoe_designs ||--o| order_items : "orders"
+    
+    orders ||--o{ order_items : "contains"
+    orders ||--o{ order_trackings : "logs"
+    orders ||--o| payments : "has"
+    orders }o--o| coupons : "applies"
+    orders }o--o| delivery_options : "uses"
 
-## Security Vulnerabilities
+    carts ||--o{ cart_items : "contains"
+    cart_items }o--|| shoes : "references"
+    cart_items }o--o| shoe_designs : "uses"
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Table Definitions & Roles
+1. **`users`**: Customer and administrator accounts (`role` defines privileges).
+2. **`shoes`**: Main product catalog containing base price, description, silhouette configurations (`low`, `mid`, `high`), and status.
+3. **`color_zones`**: Customizable meshes for each shoe model mapping directly to Three.js identifiers (e.g., `vamp`, `swoosh`, `outsole`, `collar`).
+4. **`materials`**: Material variants containing price modifiers (e.g. Leather adds $20) and physical attributes.
+5. **`shoe_designs`**: Stores user-configured design states as JSON payloads (`design_json`).
+6. **`carts` & `cart_items`**: Manages current shopping cart choices, size, quantity, and selected custom design configurations.
+7. **`orders` & `order_items`**: Preserves snapshots of orders, including static snapshots of customized designs and purchase prices.
+8. **`order_tracking`**: Logs historical timeline milestones for delivery verification.
+9. **`coupons`**: Discount configurations including limits, expiry, types, and values.
+10. **`delivery_options`**: Options like Standard, Express, or Rush with unique delivery fee schemes.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🛠️ Installation & Setup
+
+Ensure you have **PHP >= 8.2**, **Composer**, and **Node.js** installed on your local machine.
+
+### 1. Clone & Install Dependencies
+```bash
+# Clone the repository
+git clone https://github.com/Vinayak-V/UrbanLace.git
+cd UrbanLace
+
+# Install PHP dependencies
+composer install
+
+# Install JS dependencies
+npm install
+```
+
+### 2. Environment Configuration
+Duplicate the example environment file and configure your database settings:
+```bash
+copy .env.example .env
+```
+*(By default, Laravel is preconfigured to use SQLite, which creates a local `database/database.sqlite` file. If using SQLite, make sure to create the database file.)*
+
+Generate the application key:
+```bash
+php artisan key:generate
+```
+
+### 3. Database Migration & Seeding
+Populate the database with default materials, shoe silhouettes, customizable zones, and shipping configurations:
+```bash
+php artisan migrate --seed
+```
+
+This creates two default users for easy local testing:
+* **Admin Account:** `admin@urbanlace.com` (Password: `password`)
+* **Customer Account:** `customer@urbanlace.com` (Password: `password`)
+
+### 4. Build Assets & Start Development Server
+Open two terminal windows to run the frontend build watcher and the local backend server simultaneously:
+
+**Terminal 1 (Vite Dev Server):**
+```bash
+npm run dev
+```
+
+**Terminal 2 (Laravel Server):**
+```bash
+php artisan serve
+```
+
+Your app will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+## 📂 Project Directory Map
+
+* **`app/Http/Controllers/`**
+  * `HomeController.php` — Directs to home page / catalogue spotlight.
+  * `ProductController.php` — Visual catalogue and product description.
+  * `ConfiguratorController.php` — Feeds configuration zone mappings, material prices, and saves custom JSON designs.
+  * `CartController.php` — Manages dynamic session/database cart instances.
+  * `CheckoutController.php` — Handles coupon applications and checkout order registration.
+  * `DashboardController.php` — User portal for order tracking and saved design files.
+  * `Admin/AdminController.php` — Admin backoffice controller.
+* **`resources/js/configurator.js`** — Core Three.js runtime file initiating 3D geometry assemblies, light controls, orbital damping, color picker integration, and GSAP scale animations.
+* **`resources/views/`**
+  * `configurator/show.blade.php` — Interactive customizer workbench.
+  * `layouts/` — Contains configurations layout structure.
+  * `dashboard/` — User pages showing orders and design panels.
+  * `admin/` — Admin panels for order processing.
+* **`database/migrations/`** — Relational database structures.
+* **`database/seeders/DatabaseSeeder.php`** — Seeds baseline shoes, pricing, materials, color zones, and shipping classes.
