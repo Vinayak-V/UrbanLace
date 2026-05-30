@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-brand-offwhite text-brand-black antialiased font-sans selection:bg-brand-coral selection:text-white;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-display tracking-tight;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-brand-black hover:bg-black transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-black;
+    }
+    
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-6 py-3 border border-brand-black text-base font-medium rounded-full text-brand-black bg-transparent hover:bg-brand-black hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-black;
+    }
+
+    .btn-accent {
+        @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-brand-coral hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-coral;
+    }
+
+    .glass-panel {
+        @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl;
+    }
+}
