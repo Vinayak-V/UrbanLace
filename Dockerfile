@@ -24,7 +24,7 @@ WORKDIR /var/www/html
 
 # Copy composer files first (for Docker layer caching)
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --optimize-autoloader --no-scripts
 
 # Copy package files and install Node dependencies
 COPY package.json package-lock.json ./
