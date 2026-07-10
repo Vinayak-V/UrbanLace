@@ -14,19 +14,23 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Users
-        \App\Models\User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@urbanlace.com',
-            'password' => bcrypt('password'),
-            'role' => 'admin',
-        ]);
+        \App\Models\User::firstOrCreate(
+            ['email' => 'admin@urbanlace.com'],
+            [
+                'name' => 'Admin User',
+                'password' => bcrypt('password'),
+                'role' => 'admin',
+            ]
+        );
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test Customer',
-            'email' => 'customer@urbanlace.com',
-            'password' => bcrypt('password'),
-            'role' => 'user',
-        ]);
+        \App\Models\User::firstOrCreate(
+            ['email' => 'customer@urbanlace.com'],
+            [
+                'name' => 'Test Customer',
+                'password' => bcrypt('password'),
+                'role' => 'user',
+            ]
+        );
 
         // Materials
         $materials = [
@@ -37,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($materials as $mat) {
-            \App\Models\Material::create($mat);
+            \App\Models\Material::firstOrCreate(['name' => $mat['name']], $mat);
         }
 
         // Shoes & Color Zones
@@ -72,15 +76,19 @@ class DatabaseSeeder extends Seeder
             $zones = $shoeData['zones'];
             unset($shoeData['zones']);
 
-            $shoe = \App\Models\Shoe::create($shoeData);
+            $shoe = \App\Models\Shoe::firstOrCreate(['name' => $shoeData['name']], $shoeData);
 
             foreach ($zones as $zone) {
-                \App\Models\ColorZone::create([
-                    'shoe_id' => $shoe->id,
-                    'name' => ucfirst($zone),
-                    'mesh_name' => $zone, // This will match the Three.js mesh node name
-                    'default_color' => '#FFFFFF',
-                ]);
+                \App\Models\ColorZone::firstOrCreate(
+                    [
+                        'shoe_id' => $shoe->id,
+                        'name' => ucfirst($zone),
+                        'mesh_name' => $zone,
+                    ],
+                    [
+                        'default_color' => '#FFFFFF',
+                    ]
+                );
             }
         }
 
@@ -92,7 +100,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($deliveryOptions as $opt) {
-            \App\Models\DeliveryOption::create($opt);
+            \App\Models\DeliveryOption::firstOrCreate(['name' => $opt['name']], $opt);
         }
     }
 }
