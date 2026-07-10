@@ -39,9 +39,7 @@ RUN composer dump-autoload --optimize
 # Build frontend assets
 RUN npm run build
 
-# Cache Laravel config/routes/views for production
-RUN php artisan config:cache || true
-RUN php artisan route:cache || true
+# Cache Laravel views for production (views do not contain env variables)
 RUN php artisan view:cache || true
 
 # Set permissions
